@@ -60,4 +60,9 @@ public class Config implements Serializable {
   public void setAndroidID(String androidID) {
     this.androidID = androidID;
   }
+
+  @Override
+  public String toString() {
+      return "Config [subscription=" + getSubscription() + ", map=" + map + ", locale=" + locale + ", androidID=" + androidID + "]";
+  }
 }

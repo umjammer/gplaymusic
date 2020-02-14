@@ -38,6 +38,7 @@ public class TestWithLogin {
           .setAuthToken(authToken)
           .setDebug(false)
           .setHttpClientBuilder(builder)
+          .setAndroidID(androidID.get())
           .build();
     } catch (InitializationException e) {
       if (usingExistingToken) {

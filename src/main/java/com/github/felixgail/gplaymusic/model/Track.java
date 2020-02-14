@@ -202,9 +202,9 @@ public class Track extends Signable implements Result, Serializable, Model {
 
   @Override
   public String getID() {
-    return getStoreId().orElseGet(
-        () -> getUuid().orElseThrow(
-            () -> new NullPointerException("Track contains neither StoreID nor UUID.")));
+    return getUuid().orElseGet(
+        () -> getStoreId().orElseThrow(
+            () -> new NullPointerException("Track contains neither UUID nor StoreID.")));
   }
 
   public Optional<String> getStoreId() {
@@ -356,6 +356,22 @@ public class Track extends Signable implements Result, Serializable, Model {
 
   public String string() {
     return gsonPrettyPrinter.toJson(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Track [title=" + title + ", artist=" + artist + ", composer=" + composer + ", album=" + album + ", albumArtist=" +
+           albumArtist + ", year=" + year + ", trackNumber=" + trackNumber + ", genre=" + genre + ", durationMillis=" +
+           durationMillis + ", albumArtRef=" + albumArtRef + ", artistArtRef=" + artistArtRef + ", discNumber=" + discNumber +
+           ", estimatedSize=" + estimatedSize + ", trackType=" + trackType + ", storeId=" + storeId + ", albumId=" + albumId +
+           ", artistId=" + artistId + ", nid=" + nid + ", trackAvailableForSubscription=" + trackAvailableForSubscription +
+           ", trackAvailableForPurchase=" + trackAvailableForPurchase + ", albumAvailableForPurchase=" +
+           albumAvailableForPurchase + ", explicitType=" + explicitType + ", playCount=" + playCount + ", rating=" + rating +
+           ", beatsPerMinute=" + beatsPerMinute + ", clientId=" + clientId + ", comment=" + comment + ", totalTrackCount=" +
+           totalTrackCount + ", totalDiscCount=" + totalDiscCount + ", lastRatingChangeTimestamp=" + lastRatingChangeTimestamp +
+           ", lastModifiedTimestamp=" + lastModifiedTimestamp + ", contentType=" + contentType + ", creationTimestamp=" +
+           creationTimestamp + ", recentTimestamp=" + recentTimestamp + ", uuid=" + uuid + ", video=" + video +
+           ", sessionToken=" + sessionToken + ", mainApi=" + mainApi + ", wentryID=" + wentryID + "]";
   }
 
   /**
